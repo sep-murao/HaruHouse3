@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+.Paging {
+	position: relative;
+	right: 40px;
+}
+
+.Paging li{
+	display:inline;
+	width: 40px;
+}
+
+#search{
+	position: relative;
+	left: 370px;
+}
+
+table th{
+	background:#BAD3FF;
+}
