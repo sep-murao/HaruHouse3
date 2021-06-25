@@ -141,6 +141,7 @@
 <form method="POST" action="Add_customer.jsp" name="">
 <input type="submit" value="新規登録" style="width:100px" id="">
 </form>
+
 <!--ページング -->
 <ul class="Paging">
 <%int now = Integer.parseInt(nowPage); %>
@@ -151,24 +152,24 @@
 	
 	<%}else{ %>
 	<form method="post" name="Return_Search" action="ListBL_customer">
-	<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
-	<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
-	<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
-	<input type="hidden" name="SearchCUST_NAME"	value=<%=SearchCUST_NAME%>>
-	<input type="hidden" name="SearchCUST_NAME_KANA" value=<%=SearchCUST_NAME_KANA%>>
-	<input type="hidden" name="SearchCUST_ZIP" value=<%=SearchCUST_ZIP%>>
-	<input type="hidden" name="SearchCUST_PREFECTURE" value=<%=SearchCUST_PREFECTURE%>>
-	<input type="hidden" name="SearchCUST_ADDRESS1"	value=<%=SearchCUST_ADDRESS1%>>
-	<input type="hidden" name="SearchCUST_ADDRESS2"	value=<%=SearchCUST_ADDRESS2%>>
-	<input type="hidden" name="SearchCUST_TEL" value=<%=SearchCUST_TEL%>>
-	<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
-	<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
-	<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
+		<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
+		<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
+		<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
+		<input type="hidden" name="SearchCUST_NAME"	value=<%=SearchCUST_NAME%>>
+		<input type="hidden" name="SearchCUST_NAME_KANA" value=<%=SearchCUST_NAME_KANA%>>
+		<input type="hidden" name="SearchCUST_ZIP" value=<%=SearchCUST_ZIP%>>
+		<input type="hidden" name="SearchCUST_PREFECTURE" value=<%=SearchCUST_PREFECTURE%>>
+		<input type="hidden" name="SearchCUST_ADDRESS1"	value=<%=SearchCUST_ADDRESS1%>>
+		<input type="hidden" name="SearchCUST_ADDRESS2"	value=<%=SearchCUST_ADDRESS2%>>
+		<input type="hidden" name="SearchCUST_TEL" value=<%=SearchCUST_TEL%>>
+		<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
+		<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
+		<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
+		<input type="hidden" name="nowPage" value=<%=now - 1%>>
 	
-	<li> <a href= "ListBL_customer?nowPage=<%=now - 1 %>" > 前へ</a> </li>
-	<%} %>
+	<li> <a href= "javascript:Return_Search.submit()" > 前へ</a> </li>
 	</form>
-	
+	<%} %>
 
 		<!--ページ数が１か２の時 -->
 	 <%if(now == 1 || now == 2){
@@ -181,9 +182,26 @@
 			    	<li> [<%=i %>]</li>
 			    	
 			    	<% }else{%>
-			        <li> <a href= "ListBL_customer?nowPage=<%=i %>" ><%=i%></a> </li>
-				<% }
-		    	}
+						<form method="post" name="1to2_Search<%=i %>" action="ListBL_customer">
+						<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
+						<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
+						<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
+						<input type="hidden" name="SearchCUST_NAME"	value=<%=SearchCUST_NAME%>>
+						<input type="hidden" name="SearchCUST_NAME_KANA" value=<%=SearchCUST_NAME_KANA%>>
+						<input type="hidden" name="SearchCUST_ZIP" value=<%=SearchCUST_ZIP%>>
+						<input type="hidden" name="SearchCUST_PREFECTURE" value=<%=SearchCUST_PREFECTURE%>>
+						<input type="hidden" name="SearchCUST_ADDRESS1"	value=<%=SearchCUST_ADDRESS1%>>
+						<input type="hidden" name="SearchCUST_ADDRESS2"	value=<%=SearchCUST_ADDRESS2%>>
+						<input type="hidden" name="SearchCUST_TEL" value=<%=SearchCUST_TEL%>>
+						<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
+						<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
+						<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
+						<input type="hidden" name="nowPage" value=<%=i %>>
+			    	
+			        <li> <a href= "javascript:1to2_Search<%=i %>.submit()" ><%=i%></a> </li>
+			        </form>
+				<% }%>
+			 <%}
 	 }%>
 
 		<!--ページ数が３～(maxPage - 2)の時 -->
@@ -196,13 +214,29 @@
 		    	<li>[ <%=i %>]</li>
 		    	
 			    	<% }else{%>
-			        <li> <a href= "ListBL_customer?nowPage=<%=i %>" ><%=i%></a> </li>
-				<% }
-	    	}
+			    	<form method="post" name="3_Search<%=i %>" action="ListBL_customer">
+						<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
+						<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
+						<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
+						<input type="hidden" name="SearchCUST_NAME"	value=<%=SearchCUST_NAME%>>
+						<input type="hidden" name="SearchCUST_NAME_KANA" value=<%=SearchCUST_NAME_KANA%>>
+						<input type="hidden" name="SearchCUST_ZIP" value=<%=SearchCUST_ZIP%>>
+						<input type="hidden" name="SearchCUST_PREFECTURE" value=<%=SearchCUST_PREFECTURE%>>
+						<input type="hidden" name="SearchCUST_ADDRESS1"	value=<%=SearchCUST_ADDRESS1%>>
+						<input type="hidden" name="SearchCUST_ADDRESS2"	value=<%=SearchCUST_ADDRESS2%>>
+						<input type="hidden" name="SearchCUST_TEL" value=<%=SearchCUST_TEL%>>
+						<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
+						<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
+						<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
+						<input type="hidden" name="nowPage" value=<%=i %>>
+						
+			        <li> <a href= "javascript:3_Search<%=i %>.submit()" ><%=i%></a> </li>
+			        </form>
+				<% }%>     
+	    	<% }
 	
-	    }
+	    }%>
 	
-	%>
 		<!--ページ数が最終ぺージか最終ページ1つ前の時 -->	
 	<%}else{ 
 	    for (int i = maxPage -4 ; i <= maxPage; i++){        // now - 2になるまで1を足して繰り返す
@@ -213,7 +247,24 @@
 		    	<li> [<%=i %>]</li>
 		    	
 			    	<% }else{%>
-			        <li> <a href= "ListBL_customer?nowPage=<%=i %>" ><%=i%></a> </li>
+			    	<form method="post" name="last_Search" action="ListBL_customer">
+						<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
+						<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
+						<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
+						<input type="hidden" name="SearchCUST_NAME"	value=<%=SearchCUST_NAME%>>
+						<input type="hidden" name="SearchCUST_NAME_KANA" value=<%=SearchCUST_NAME_KANA%>>
+						<input type="hidden" name="SearchCUST_ZIP" value=<%=SearchCUST_ZIP%>>
+						<input type="hidden" name="SearchCUST_PREFECTURE" value=<%=SearchCUST_PREFECTURE%>>
+						<input type="hidden" name="SearchCUST_ADDRESS1"	value=<%=SearchCUST_ADDRESS1%>>
+						<input type="hidden" name="SearchCUST_ADDRESS2"	value=<%=SearchCUST_ADDRESS2%>>
+						<input type="hidden" name="SearchCUST_TEL" value=<%=SearchCUST_TEL%>>
+						<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
+						<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
+						<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
+						<input type="hidden" name="nowPage" value=<%=i %>>
+						
+			        <li> <a href= "javascript:last_Search.submit()" ><%=i%></a> </li>
+			        </form>
 				<% }
 	    	}
 	
@@ -225,10 +276,26 @@
 	<li> 次へ</li>
 	
 	<%}else{ %>
-	<li> <a href= "ListBL_customer?nowPage=<%=now + 1 %>" > 次へ </a> </li>
+	<form method="post" name="Next_Search" action="ListBL_customer">
+		<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
+		<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
+		<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
+		<input type="hidden" name="SearchCUST_NAME"	value=<%=SearchCUST_NAME%>>
+		<input type="hidden" name="SearchCUST_NAME_KANA" value=<%=SearchCUST_NAME_KANA%>>
+		<input type="hidden" name="SearchCUST_ZIP" value=<%=SearchCUST_ZIP%>>
+		<input type="hidden" name="SearchCUST_PREFECTURE" value=<%=SearchCUST_PREFECTURE%>>
+		<input type="hidden" name="SearchCUST_ADDRESS1"	value=<%=SearchCUST_ADDRESS1%>>
+		<input type="hidden" name="SearchCUST_ADDRESS2"	value=<%=SearchCUST_ADDRESS2%>>
+		<input type="hidden" name="SearchCUST_TEL" value=<%=SearchCUST_TEL%>>
+		<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
+		<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
+		<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
+		<input type="hidden" name="nowPage" value=<%=now + 1 %>>
+		
+	<li> <a href= "javascript:Next_Search.submit()" > 次へ </a> </li>
+	</form>
 	<%} %>
 </ul>
-</form>
 
 <!-- 一覧表示 -->
 <table class="L_table" border="2" style="border-collapse: collapse">
