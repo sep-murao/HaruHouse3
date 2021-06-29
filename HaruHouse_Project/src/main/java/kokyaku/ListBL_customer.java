@@ -130,6 +130,15 @@ public class ListBL_customer extends HttpServlet {
 		
 		
 	}
+	
+	protected  String  nullChk(String Val) {
+		String wk = "";
+		if(Val == null || Val == "") {
+		}else{
+			wk = Val;
+		}
+		return wk;
+	}
 	protected  String initProc(HttpServletRequest request, HttpServletResponse response, String nowPage, int limitSta) {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -156,19 +165,19 @@ public class ListBL_customer extends HttpServlet {
 		 }
 		String SelectQuery = "";
 		
-		String SearchCUST_KIND =request.getParameter("SearchCUST_KIND");
-		String SearchCORP_NAME =request.getParameter("SearchCORP_NAME");
-		String SearchCORP_NAME_KANA =request.getParameter("SearchCORP_NAME_KANA");
-		String SearchCUST_NAME =request.getParameter("SearchCUST_NAME");
-		String SearchCUST_NAME_KANA =request.getParameter("SearchCUST_NAME_KANA");
-		String SearchCUST_ZIP =request.getParameter("SearchCUST_ZIP");
-		String SearchCUST_PREFECTURE =request.getParameter("SearchCUST_PREFECTURE");
-		String SearchCUST_ADDRESS1 =request.getParameter("SearchCUST_ADDRESS1");
-		String SearchCUST_ADDRESS2 =request.getParameter("SearchCUST_ADDRESS2");
-		String SearchCUST_TEL =request.getParameter("SearchCUST_TEL");
-		String SearchCUST_MOBILE =request.getParameter("SearchCUST_MOBILE");
-		String SearchCUST_MAIL =request.getParameter("SearchCUST_MAIL");
-		String SearchSTATUS =request.getParameter("SearchSTATUS");
+		String SearchCUST_KIND =nullChk(request.getParameter("SearchCUST_KIND"));
+		String SearchCORP_NAME =nullChk(request.getParameter("SearchCORP_NAME"));
+		String SearchCORP_NAME_KANA =nullChk(request.getParameter("SearchCORP_NAME_KANA"));
+		String SearchCUST_NAME =nullChk(request.getParameter("SearchCUST_NAME"));
+		String SearchCUST_NAME_KANA =nullChk(request.getParameter("SearchCUST_NAME_KANA"));
+		String SearchCUST_ZIP =nullChk(request.getParameter("SearchCUST_ZIP"));
+		String SearchCUST_PREFECTURE =nullChk(request.getParameter("SearchCUST_PREFECTURE"));
+		String SearchCUST_ADDRESS1 =nullChk(request.getParameter("SearchCUST_ADDRESS1"));
+		String SearchCUST_ADDRESS2 =nullChk(request.getParameter("SearchCUST_ADDRESS2"));
+		String SearchCUST_TEL =nullChk(request.getParameter("SearchCUST_TEL"));
+		String SearchCUST_MOBILE =nullChk(request.getParameter("SearchCUST_MOBILE"));
+		String SearchCUST_MAIL =nullChk(request.getParameter("SearchCUST_MAIL"));
+		String SearchSTATUS =nullChk(request.getParameter("SearchSTATUS"));
 		
 		//個人・法人区分
 		 if(SearchCUST_KIND == null || SearchCUST_KIND == "") {

@@ -170,6 +170,11 @@
 	<li> <a href= "javascript:Return_Search.submit()" > 前へ</a> </li>
 	</form>
 	<%} %>
+	<% 
+	int num = 0;
+	
+	
+	%>
 
 		<!--ページ数が１か２の時 -->
 	 <%if(now == 1 || now == 2){
@@ -182,7 +187,8 @@
 			    	<li> [<%=i %>]</li>
 			    	
 			    	<% }else{%>
-						<form method="post" name="1to2_Search<%=i %>" action="ListBL_customer">
+			    	<!-- 1to2_Search -->
+						<form method="post" name="OneTwoSearch" action="ListBL_customer">
 						<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
 						<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
 						<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
@@ -196,9 +202,10 @@
 						<input type="hidden" name="SearchCUST_MOBILE" value=<%=SearchCUST_MOBILE%>>
 						<input type="hidden" name="SearchCUST_MAIL"	value=<%=SearchCUST_MAIL%>>
 						<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
-						<input type="hidden" name="nowPage" value=<%=i %>>
+						<input type="hidden" name="nowPage"		 value=<%=i %>>
 			    	
-			        <li> <a href= "javascript:1to2_Search<%=i %>.submit()" ><%=i%></a> </li>
+			        <li> <a href= "javascript:OneTwoSearch[<%=num %>].submit();" ><%=i%></a> </li>
+			        <% num = num +1;  %>
 			        </form>
 				<% }%>
 			 <%}
@@ -214,7 +221,7 @@
 		    	<li>[ <%=i %>]</li>
 		    	
 			    	<% }else{%>
-			    	<form method="post" name="3_Search<%=i %>" action="ListBL_customer">
+			    	<form method="post" name="3_Search[<%=i %>]" action="ListBL_customer">
 						<input type="hidden" name="SearchCUST_KIND" value=<%=SearchCUST_KIND%>>
 						<input type="hidden" name="	SearchCORP_NAME" value=<%=SearchCORP_NAME%>>
 						<input type="hidden" name="SearchCORP_NAME_KANA" value=<%=SearchCORP_NAME_KANA%>>
@@ -230,7 +237,7 @@
 						<input type="hidden" name="SearchSTATUS" value=<%=SearchSTATUS%>>
 						<input type="hidden" name="nowPage" value=<%=i %>>
 						
-			        <li> <a href= "javascript:3_Search<%=i %>.submit()" ><%=i%></a> </li>
+			        <li> <a href= "javascript:3_Search[<%=i %>].submit()" ><%=i%></a> </li>
 			        </form>
 				<% }%>     
 	    	<% }
